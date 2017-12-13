@@ -1,12 +1,18 @@
 function [lift, drag] = findLiftDrag(pressures, alpha, beta, b)
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
+% Find lift and drag per unit span given the pressures at each station
+
+% Reorganize pressure array into variables
+% Probably a better way to do this
 tempPres = num2cell(pressures);
-[p1, p2, p3, p4] = deal(tempPres{:});
+[p_1, p_2, p_3, p_4] = deal(tempPres{:});
+
+%Calculate the length of each wing section (hypotenuse)
 bcosb = b/cosd(beta);
 
-lift = (p4-p1)*(bcosb*cosd(beta-alpha))+(p3-p2)*(bcosb*cosd(alpha+beta));
-drag = (p1-p4)*(bcosb*sind(beta-alpha))+(p3-p2)*(bcosb*sind(alpha+beta));
+% Calculate lift and drag by multiplying pressures by vertical and
+% horizontal components of each wing section
+lift = (p_4-p_1)*(bcosb*cosd(beta-alpha))+(p_3-p_2)*(bcosb*cosd(alpha+beta));
+drag = (p_1-p_4)*(bcosb*sind(beta-alpha))+(p_3-p_2)*(bcosb*sind(alpha+beta));
 
 end
 
