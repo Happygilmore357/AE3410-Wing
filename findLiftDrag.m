@@ -4,8 +4,11 @@ function [lift, drag] = findLiftDrag(pressures, alpha, beta, b)
 % Reorganize pressure array into variables
 % Probably a better way to do this
 tempPres = num2cell(pressures);
-[p_1, p_2, p_3, p_4] = deal(pressures(1,4));
-
+%[p_1, p_2, p_3, p_4] = deal(pressures(1,4))
+p_1 = pressures(1);
+p_2 = pressures(2);
+p_3 = pressures(3);
+p_4 = pressures(4);
 %Calculate the length of each wing section (hypotenuse)
 bcosb = b/cosd(beta);
 

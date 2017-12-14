@@ -6,7 +6,6 @@ function [m2, p2p1] = findPMRelations(m1, delta, gamma)
 
 nu1 = P_M_Equation_Solver(gamma, 0, m1, 'nu');
 m2 = P_M_Equation_Solver(gamma, nu1 + delta, 0, 'mach');
-
 % Cancel p/p0 ratios to get p2/p1
 p2p1 = findpp0(m2, gamma)/findpp0(m1, gamma);
 
